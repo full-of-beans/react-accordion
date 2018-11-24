@@ -54,9 +54,9 @@ class BaseAccordion extends Component {
       const closing = state.openedIndexes.includes(index);
       return {
         type: closing ? 'closing' : 'opening',
-        openIndexes: closing
-          ? state.openIndexes.filter(i => i !== index)
-          : [...state.openIndexes, index]
+        openedIndexes: closing
+          ? state.openedIndexes.filter(i => i !== index)
+          : [...state.openedIndexes, index]
       };
     });
   };
@@ -64,7 +64,7 @@ class BaseAccordion extends Component {
   render() {
     const { children } = this.props;
     return children({
-      openIndexes: this.getState().openIndexes,
+      openedIndexes: this.getState().openedIndexes,
       handleItemClick: this.handleItemClick
     });
   }
